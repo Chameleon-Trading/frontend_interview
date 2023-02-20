@@ -34,11 +34,11 @@ const OrderForm = () => {
 
   const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPct(parseInt(event.target.value));
-    setSz(pct * maxSz);
+    setSz(pct / 100.0 * maxSz);
   }
 
   return (
-    <form className="order-form">
+    <div className="order-form">
       <div className="order-type-menu">
         <button>
           Market
@@ -59,7 +59,7 @@ const OrderForm = () => {
 
       <div className="input-field">
         <label>
-            Size
+          Size
         </label>
         <input type="text"/>
         <select name="SizeCurrencySelector">
@@ -85,12 +85,12 @@ const OrderForm = () => {
         <button
           onClick={() => {
             const action = isBuy ? 'Bought' : 'Sold';
-            console.log(`Trade submitted! ${action} ${sz} ETH at ${ethPrice} USD.`);
+            alert(`Trade submitted! ${action} ${sz} ETH at ${ethPrice} USD.`);
         }}>
           Place Order
         </button>
       </div>
-    </form>
+    </div>
   )
 }
 
